@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xaydunglopmotadienthoai</title>
+</head>
+<body>
+<script>
+    class Mobile{
+        pin
+        tinNhap
+        daGui
+        daNhan
+        batTat
+        constructor(pin,tinNhap,daGui,daNhan,batTat) {
+            this.pin = pin;
+            this.tinNhap = tinNhap;
+            this.daGui = daGui;
+            this.daNhan = daNhan;
+            this.batTat = batTat;
+        }
+
+        checkOnOff(){
+            return this.batTat;
+        }
+        onMobile(){
+            this.batTat = true;
+        }
+
+        offMobile(){
+            this.batTat = false;
+        }
+        chargeMobile(){
+            this.pin +=10;
+            setTimeout(1000);
+        }
+        writeMes(tinnhap){
+            if (this.checkOnOff()){
+                this.tinNhap = tinnhap;
+                this.pin--;
+            }
+        }
+        receiveMes(danhan){
+            if (this.checkOnOff()) {
+                this.daNhan = danhan;
+                this.pin--;
+            }
+        }
+        sentMes(dagui){
+            if (this.checkOnOff()) {
+                this.daGui = dagui;
+                this.tinNhap = "";
+                this.pin--;
+            }
+        }
+        readMes(danhan){
+            if (this.checkOnOff()) {
+                this.daNhan = danhan;
+                this.pin--;
+            }
+        }
+
+    }
+
+    let nokia = new Mobile(90,"","","",true);
+    let iphone = new Mobile(50,"","","",true);
+    nokia.tinNhap="xin chao";
+    nokia.sentMes(nokia.tinNhap);
+    iphone.readMes(nokia.daGui);
+
+
+</script>
+</body>
+</html>
