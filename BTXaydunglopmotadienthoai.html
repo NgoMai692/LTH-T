@@ -35,26 +35,26 @@
             setTimeout(1000);
         }
         writeMes(tinnhap){
-            if (this.checkOnOff()){
+            if (this.checkOnOff()&&(this.pin >0)){
                 this.tinNhap = tinnhap;
                 this.pin--;
             }
         }
         receiveMes(danhan){
-            if (this.checkOnOff()) {
+            if (this.checkOnOff()&&(this.pin >0)) {
                 this.daNhan = danhan;
                 this.pin--;
             }
         }
         sentMes(dagui){
-            if (this.checkOnOff()) {
+            if (this.checkOnOff()&&(this.pin >0)) {
                 this.daGui = dagui;
                 this.tinNhap = "";
                 this.pin--;
             }
         }
         readMes(danhan){
-            if (this.checkOnOff()) {
+            if (this.checkOnOff()&&(this.pin >0)) {
                 this.daNhan = danhan;
                 this.pin--;
             }
@@ -67,7 +67,11 @@
     nokia.tinNhap="xin chao";
     nokia.sentMes(nokia.tinNhap);
     iphone.readMes(nokia.daGui);
-
+    alert(iphone.daNhan);
+    nokia.tinNhap = "Hello";
+    nokia.sentMes(nokia.tinNhap);
+    iphone.readMes(nokia.daGui);
+    alert(iphone.daNhan);
 
 </script>
 </body>

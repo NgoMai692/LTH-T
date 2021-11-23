@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="game">
+    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Ftophinhanhdep.com%2Fwp-content%2Fuploads%2F2021%2F10%2FNobita-Wallpapers.jpg&imgrefurl=https%3A%2F%2Ftophinhanhdep.com%2Fanh-dep%2Fnobita-wallpapers%2F&tbnid=E2XT4Kttp_zNFM&vet=12ahUKEwjNi6bZ4a70AhUB6ZQKHSuhB-gQMygGegUIARC5AQ..i&docid=RrecN5gAn6jcKM&w=1284&h=698&itg=1&q=%E1%BA%A3nh%20nobita&ved=2ahUKEwjNi6bZ4a70AhUB6ZQKHSuhB-gQMygGegUIARC5AQ" alt="">
+</div>>
+<script>
+    class Hero {
+        image
+        top
+        left
+        size
+        speed
+
+        constructor(image, top, left, size, speed) {
+            this.image = image
+            this.top = top
+            this.left = left
+            this.size = size
+            this.speed = speed
+        }
+
+        getHeroElement() {
+            return '<img width="' + this.size + '"' +
+                ' height="' + this.size + '"' +
+                ' src="' + this.image + '"' +
+                ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;" />';
+        }
+
+        getMoveRight() {
+            return this.left += this.speed
+        }
+
+        getMoveDown() {
+            return this.top += this.speed
+        }
+
+        getMoveLeft() {
+            return this.left -= this.speed
+        }
+
+        getMoveUp() {
+            return this.top -= this.speed
+        }
+
+    }
+
+    let speed1 = +prompt("nhập tốc độ")
+    let hero = new Hero("https://www.google.com/url?sa=i&url=https%3A%2F%2Fthe-gioi-anime-anime-world.fandom.com%2Fvi%2Fwiki%2FNobi_Nobita&psig=AOvVaw0r4Z_J3E5749Ft5NeNIdqS&ust=1637766475605000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPCx397hrvQCFQAAAAAdAAAAABAD", 0, 0, 100, speed1);
+
+    function start() {
+        if (hero.left < (window.innerWidth - hero.size) && hero.top === 0) {
+            hero.getMoveRight();
+        } else if (hero.top < (window.innerHeight - hero.size) && hero.left > 0) {
+            hero.getMoveDown()
+        } else if (hero.left > 0) {
+            hero.getMoveLeft()
+        } else if (hero.top > 0) {
+            hero.getMoveUp()
+        }
+
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start, 50)
+    }
+
+    start();
+</script>
+</body>
+</html>
